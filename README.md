@@ -3,7 +3,10 @@
 PHP expo push notifications client
 
 ## Installation
-
+You can install the package via composer
+```
+composer require imdhemy/expo-notifications
+```
 ## Usage
 ```php
 use Imdhemy\Expo\Client;
