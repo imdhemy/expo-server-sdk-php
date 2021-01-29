@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Imdhemy\Expo;
+namespace Imdhemy\Expo\Messages;
 
 use Imdhemy\Expo\Contracts\ExpoTokenAble;
 use Imdhemy\Expo\Contracts\JsonAble;
@@ -13,6 +13,11 @@ use Imdhemy\Expo\Contracts\MessageAble;
  */
 class Message implements MessageAble
 {
+    const PRIORITY_DEFAULT = 'default';
+    const PRIORITY_NORMAL = 'normal';
+    const PRIORITY_HIGH = 'high';
+    const SOUND_DEFAULT = 'default';
+
     /**
      * @var array|ExpoTokenAble[]
      */
@@ -44,7 +49,7 @@ class Message implements MessageAble
     protected $expiration;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $priority;
 
@@ -62,10 +67,26 @@ class Message implements MessageAble
      * @var int|null
      */
     protected $badge;
+
     /**
      * @var string|null
      */
     protected $channelId;
+
+    /**
+     * Message constructor.
+     * @param array|ExpoTokenAble[] $tokens
+     * @param string $title
+     * @param string $body
+     * @param JsonAble|null $data
+     */
+    public function __construct(array $tokens, string $title, string $body, ?JsonAble $data = null)
+    {
+        $this->tokens = $tokens;
+        $this->title = $title;
+        $this->body = $body;
+        $this->data = $data ?? MessageData::empty();
+    }
 
     /**
      * @return JsonAble
@@ -144,9 +165,9 @@ class Message implements MessageAble
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPriority(): string
+    public function getPriority(): ?string
     {
         return $this->priority;
     }
