@@ -3,7 +3,6 @@
 
 namespace Imdhemy\Expo\Messages;
 
-use Imdhemy\Expo\Contracts\ExpoTokenAble;
 use Imdhemy\Expo\Contracts\JsonAble;
 use Imdhemy\Expo\Contracts\MessageAble;
 
@@ -19,7 +18,7 @@ class Message implements MessageAble
     const SOUND_DEFAULT = 'default';
 
     /**
-     * @var array|ExpoTokenAble[]
+     * @var array
      */
     protected $tokens;
 
@@ -75,7 +74,7 @@ class Message implements MessageAble
 
     /**
      * Message constructor.
-     * @param array|ExpoTokenAble[] $tokens
+     * @param array $tokens
      * @param string $title
      * @param string $body
      * @param JsonAble|null $data
@@ -260,7 +259,7 @@ class Message implements MessageAble
     }
 
     /**
-     * @return array|ExpoTokenAble[]
+     * @return array
      */
     public function getTo(): array
     {
@@ -268,7 +267,7 @@ class Message implements MessageAble
     }
 
     /**
-     * @return array|ExpoTokenAble[]
+     * @return array
      */
     public function getTokens()
     {
@@ -276,7 +275,7 @@ class Message implements MessageAble
     }
 
     /**
-     * @param array|ExpoTokenAble[] $tokens
+     * @param array $tokens
      * @return Message
      */
     public function setTokens(array $tokens)

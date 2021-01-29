@@ -10,7 +10,7 @@ namespace Imdhemy\Expo\Contracts;
 interface MessageAble
 {
     /**
-     * @return array|ExpoTokenAble[]
+     * @return array
      */
     public function getTo(): array;
 
@@ -40,9 +40,9 @@ interface MessageAble
     public function getExpiration(): ?int;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPriority(): string;
+    public function getPriority(): ?string;
 
     /**
      * @return string|null

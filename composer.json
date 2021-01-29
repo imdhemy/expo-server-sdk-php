@@ -26,12 +26,14 @@
     }
   },
   "require": {
+    "fakerphp/faker": "^1.13",
     "guzzlehttp/guzzle": ">=7.2",
     "illuminate/collections": "^8.25"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.5",
     "friendsofphp/php-cs-fixer": "^2.18",
+    "phpunit/phpunit": "^9.5",
+    "symfony/var-dumper": "^5.2",
     "vimeo/psalm": "^4.4"
   },
   "scripts": {
