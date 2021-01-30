@@ -3,7 +3,8 @@
 
 namespace Imdhemy\Expo\Messages;
 
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Imdhemy\Expo\Contracts\JsonAble;
 
 /**
@@ -13,7 +14,7 @@ use Imdhemy\Expo\Contracts\JsonAble;
 class MessageData implements JsonAble
 {
     /**
-     * @var Collection
+     * @var ArrayCollection
      */
     protected $collection;
 
@@ -40,7 +41,7 @@ class MessageData implements JsonAble
      */
     public static function fromArray(array $data): JsonAble
     {
-        return new self(new Collection($data));
+        return new self(new ArrayCollection($data));
     }
 
     /**
@@ -56,6 +57,6 @@ class MessageData implements JsonAble
      */
     public function toJson(): string
     {
-        return $this->collection->toJson();
+        return json_encode($this->collection->toArray());
     }
 }

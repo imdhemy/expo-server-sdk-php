@@ -3,7 +3,8 @@
 
 namespace Imdhemy\Expo\Messages;
 
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Imdhemy\Expo\Contracts\JsonAble;
 use Imdhemy\Expo\Contracts\MessageAble;
 
@@ -80,7 +81,7 @@ class Message implements MessageAble
      */
     public function __construct(string $title, string $body)
     {
-        $this->tokens = new Collection();
+        $this->tokens = new ArrayCollection();
         $this->title = $title;
         $this->body = $body;
         $this->data = MessageData::empty();
@@ -312,23 +313,25 @@ class Message implements MessageAble
     }
 
     /**
+     * @param array $tokens
+     * @return Message
+     */
+    public function addManyPushTokens(array $tokens): Message
+    {
+        foreach ($tokens as $token) {
+            $this->addPushToken($token);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param string $token
      * @return Message
      */
     public function addPushToken(string $token): Message
     {
         $this->tokens->add($token);
-
-        return $this;
-    }
-
-    /**
-     * @param array $tokens
-     * @return Message
-     */
-    public function addManyPushTokens(array $tokens): Message
-    {
-        $this->tokens->push($tokens);
 
         return $this;
     }

@@ -26,9 +26,10 @@
     }
   },
   "require": {
+    "doctrine/collections": "^1.6",
     "fakerphp/faker": "^1.13",
     "guzzlehttp/guzzle": ">=7.2",
-    "illuminate/collections": "^8.0"
+    "ext-json": "*"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.18",

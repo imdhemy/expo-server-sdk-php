@@ -3,11 +3,11 @@
 
 namespace Imdhemy\Expo\Messages;
 
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Imdhemy\Expo\Contracts\PushTicketAble;
 use Imdhemy\Expo\Contracts\PushTicketListAble;
 
-class PushTicketList extends Collection implements PushTicketListAble
+class PushTicketList extends ArrayCollection implements PushTicketListAble
 {
     /**
      * @param array $data

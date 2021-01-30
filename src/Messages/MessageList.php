@@ -3,7 +3,7 @@
 
 namespace Imdhemy\Expo\Messages;
 
-use Illuminate\Support\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Imdhemy\Expo\Contracts\MessageAble;
 use Imdhemy\Expo\Contracts\MessageListAble;
 
@@ -11,7 +11,7 @@ use Imdhemy\Expo\Contracts\MessageListAble;
  * Class MessageList
  * @package Imdhemy\Expo\Messages
  */
-class MessageList extends Collection implements MessageListAble
+class MessageList extends ArrayCollection implements MessageListAble
 {
     /**
      * @return MessageListAble
