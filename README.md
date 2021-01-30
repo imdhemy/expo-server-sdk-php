@@ -10,7 +10,8 @@ composer require imdhemy/expo-notifications
 ## Usage
 ```php
 use Imdhemy\Expo\Client;
-use Imdhemy\Expo\Messages\Message;use Imdhemy\Expo\Messages\MessageList;
+use Imdhemy\Expo\Messages\Message;
+use Imdhemy\Expo\Messages\MessageList;
 
 $tokens = [
     'ExponentPushToken[aaaaaaaaaaaaaaaaaaaaaa]',
@@ -19,7 +20,9 @@ $tokens = [
 $title = 'hello';
 $body = 'world';
 
-$message = new Message($tokens, $title, $body);
+$message = new Message($title, $body);
+$message->addManyPushTokens($tokens);
+
 $list = MessageList::init()->addMessage($message);
 
 $client = Client::create();
