@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="/Users/dhemy/code/php-workspace/php-expo-notifications/tests" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.788532">
-    <testsuite name="Imdhemy\Expo\Tests\ClientTest" file="/Users/dhemy/code/php-workspace/php-expo-notifications/tests/ClientTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.788532">
-      <testcase name="testPush" class="Imdhemy\Expo\Tests\ClientTest" classname="Imdhemy.Expo.Tests.ClientTest" file="/Users/dhemy/code/php-workspace/php-expo-notifications/tests/ClientTest.php" line="16" assertions="1" time="0.788532"/>
-    </testsuite>
-  </testsuite>
-</testsuites>
