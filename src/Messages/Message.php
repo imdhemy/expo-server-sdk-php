@@ -274,10 +274,10 @@ class Message implements MessageAble
     }
 
     /**
-     * @param array $tokens
+     * @param Collection $tokens
      * @return Message
      */
-    public function setTokens(array $tokens)
+    public function setTokens(Collection $tokens)
     {
         $this->tokens = $tokens;
 
