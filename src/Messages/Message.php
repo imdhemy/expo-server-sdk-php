@@ -3,6 +3,7 @@
 
 namespace Imdhemy\Expo\Messages;
 
+use Illuminate\Support\Collection;
 use Imdhemy\Expo\Contracts\JsonAble;
 use Imdhemy\Expo\Contracts\MessageAble;
 
@@ -18,7 +19,7 @@ class Message implements MessageAble
     const SOUND_DEFAULT = 'default';
 
     /**
-     * @var array
+     * @var Collection
      */
     protected $tokens;
 
@@ -74,17 +75,15 @@ class Message implements MessageAble
 
     /**
      * Message constructor.
-     * @param array $tokens
      * @param string $title
      * @param string $body
-     * @param JsonAble|null $data
      */
-    public function __construct(array $tokens, string $title, string $body, ?JsonAble $data = null)
+    public function __construct(string $title, string $body)
     {
-        $this->tokens = $tokens;
+        $this->tokens = new Collection();
         $this->title = $title;
         $this->body = $body;
-        $this->data = $data ?? MessageData::empty();
+        $this->data = MessageData::empty();
     }
 
     /**
@@ -263,13 +262,13 @@ class Message implements MessageAble
      */
     public function getTo(): array
     {
-        return $this->getTokens();
+        return $this->getTokens()->toArray();
     }
 
     /**
-     * @return array
+     * @return Collection
      */
-    public function getTokens()
+    public function getTokens(): Collection
     {
         return $this->tokens;
     }
@@ -308,6 +307,28 @@ class Message implements MessageAble
     public function setTimeToLive(?int $timeToLive): Message
     {
         $this->timeToLive = $timeToLive;
+
+        return $this;
+    }
+
+    /**
+     * @param string $token
+     * @return Message
+     */
+    public function addPushToken(string $token): Message
+    {
+        $this->tokens->add($token);
+
+        return $this;
+    }
+
+    /**
+     * @param array $tokens
+     * @return Message
+     */
+    public function addManyPushTokens(array $tokens): Message
+    {
+        $this->tokens->push($tokens);
 
         return $this;
     }

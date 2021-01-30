@@ -16,8 +16,13 @@ class ClientTest extends TestCase
     public function testPush()
     {
         $faker = Factory::create('ar_SA');
-        $tokens = [getenv('TOKEN')];
-        $message = new Message($tokens, $faker->realText(30), $faker->realText(60));
+        $title = $faker->realText(30);
+        $body = $faker->realText(60);
+        $message = new Message($title, $body);
+
+        $token = getenv('TOKEN');
+        $message->addPushToken($token);
+
         $messages = MessageList::init()->addMessage($message);
 
         $client = Client::create();
